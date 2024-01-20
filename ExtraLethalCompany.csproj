@@ -10,9 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="LethalLibs\**" />
     <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="LethalLibs\**" />
     <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="LethalLibs\**" />
     <None Remove="Libraries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
+    <None Remove="LICENSE.txt" />
   </ItemGroup>
 
   <ItemGroup>

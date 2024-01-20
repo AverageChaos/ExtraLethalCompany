@@ -2,10 +2,10 @@
 
 namespace ExtraLethalCompany.Extra.Furniture.ExtraTerminal
 {
-    internal static class StartOfRRound_Patch
+    internal static class StartOfRound_Patch
     {
         [HarmonyPatch(typeof(StartOfRound), "SetMapScreenInfoToCurrentLevel"), HarmonyPostfix]
-        private static void SetMapScreenInfoToCurrentLevelPrefix(StartOfRound __instance)
+        static void SetMapScreenInfoToCurrentLevelPrefix(StartOfRound __instance)
         {
             __instance.screenLevelDescription.text = string.Concat(
             [

@@ -1,13 +1,17 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using BepInEx.Bootstrap;
 using HarmonyLib;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace ExtraLethalCompany
 {
     internal static class Disabler
     {
-        public static int MinimumToExplode = 0;
+        public static int MinimumToExplode { get; private set; } = 0;
+        public static bool UseExtraLethalPenalty { get; private set; } = false;
+        public static bool HideEnemies { get; private set; } = false;
 
         internal static void Init()
         {
@@ -24,13 +28,34 @@ namespace ExtraLethalCompany
 
         private static void LethalCompanyMinimap(object inst)
         {
-            DisableHarmony(inst, "harmony");
-            Object.DestroyImmediate(GameObject.Find("MinimapGUI"));
+            //DisableHarmony(inst, "harmony");
+            //Object.DestroyImmediate(GameObject.Find("MinimapGUI"));
+            HideEnemies = true;
         }
         private static void dev_alexanderdiaz_biggerbattery(object _) => MinimumToExplode = -3;
         private static void stormytuna_RouteRandom(object inst) => DisableHarmony(inst, "harmony");
-        private static void NoPenalty(object inst) => DisableHarmony(inst, "harmonymain");
+        private static void NoPenalty(object inst)
+        {
+            DisableHarmony(inst, "harmonymain");
+            UseExtraLethalPenalty = true;
+        }
 
         private static void DisableHarmony(object inst, string harmonyName) => Traverse.Create(inst).Field(harmonyName).GetValue<Harmony>().UnpatchSelf();
+
+        [HarmonyPatch(typeof(EnemyAI), nameof(EnemyAI.Start)), HarmonyPrefix]
+        static void StartPrefix(EnemyAI __instance)
+        {
+            if (!HideEnemies)
+                return;
+
+            foreach (Transform child in __instance.gameObject.gameObject.transform)
+            {
+                if (child.name.Contains("MapDot"))
+                {
+                    child.gameObject.SetActive(false);
+                    return;
+                }
+            }
+        }
     }
 }

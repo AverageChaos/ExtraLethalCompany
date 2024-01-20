@@ -4,6 +4,10 @@ using HarmonyLib;
 using UnityEngine;
 using LC_API.ServerAPI;
 using ExtraLethalCompany.Extra.Creatures;
+using ExtraLethalCompany.Extra.Company;
+using ExtraLethalCompany.Extra.Furniture.ExtraItemCharger;
+using ExtraLethalCompany.Extra.Furniture.ExtraTerminal;
+using ExtraLethalCompany.Extra.HUD;
 
 namespace ExtraLethalCompany
 {
@@ -39,7 +43,14 @@ namespace ExtraLethalCompany
             ModdedServer.SetServerModdedOnly();
             Disabler.Init();
 
-            Harmony.PatchAll();
+            Harmony.PatchAll(typeof(HUDManager_Patch));
+            Harmony.PatchAll(typeof(Terminal_Patch));
+            Harmony.PatchAll(typeof(ItemCharger_Patch));
+            Harmony.PatchAll(typeof(Extra.Furniture.ExtraTerminal.StartOfRound_Patch));
+            Harmony.PatchAll(typeof(Extra.Ship.StartOfRound_Patch));
+            Harmony.PatchAll(typeof(TimeOfDay_Patch));
+            Harmony.PatchAll(typeof(BlobAI_Patch));
+            Harmony.PatchAll(typeof(Disabler));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }

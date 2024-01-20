@@ -5,8 +5,8 @@ A work in progress mod that aims to do two main tasks: adding extra, missing, or
 # Features
 - ***Modifications To Existing Mods:***
     - Bigger Battery (Increases charger explosion chance)
-    - Minimap        (Disabled)
-    - NoPenalty      (Disabled)
+    - Minimap        (Disables and hides enemies)
+    - NoPenalty      (Disables and increases penalty)
     - RouteRandom    (Disabled)
 - ***Fines:***
     - Fines UI now displays the percentage cost of casualties and injuries.
@@ -36,7 +36,7 @@ A work in progress mod that aims to do two main tasks: adding extra, missing, or
 |    90%    |       50%        |
 |   100%    |       52%        |
 - ***Quota:***
-    - Buying rate starts at 115% (1.15), decreases by `(.45 / TotalDaysToFulfillQuota)` per day **(see table for example)**
+    - Buying rate starts at 115% (1.15), decreases by `.45 / TotalDaysToFulfillQuota` per day **(see table for example)**
 
 | Days Left | Sell Price |
 | :-------: | :--------: |

@@ -6,7 +6,7 @@ namespace ExtraLethalCompany.Extra.Ship
     internal static class StartOfRound_Patch
     {
         [HarmonyPatch(typeof(StartOfRound), "PowerSurgeShip"), HarmonyPrefix]
-        private static bool PowerSurgeShipPrefix(StartOfRound __instance)
+        static bool PowerSurgeShipPrefix(StartOfRound __instance)
         {
             __instance.mapScreen.SwitchScreenOn(false);
             if (!__instance.IsServer)

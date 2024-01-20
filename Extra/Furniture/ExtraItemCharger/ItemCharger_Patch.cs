@@ -15,32 +15,40 @@ namespace ExtraLethalCompany.Extra.Furniture.ExtraItemCharger
         internal static readonly List<ItemCharger> ItemChargers = [];
         internal static readonly Dictionary<ulong, ExtraItemCharger> ExtraItemChargerBinds = [];
 
-        [HarmonyPatch(typeof(ItemCharger), nameof(ItemCharger.OnNetworkSpawn)), HarmonyPostfix]
-        static void OnNetworkSpawnPostfix(ItemCharger __instance)
+        [HarmonyPatch(typeof(NetworkBehaviour), nameof(NetworkBehaviour.OnNetworkSpawn)), HarmonyPostfix]
+        static void OnNetworkSpawnPostfix(NetworkBehaviour __instance)
         {
+            ItemCharger charger = __instance.GetComponent<ItemCharger>();
+            if (!charger)
+                return;
+
             if (ExtraItemChargerBinds.ContainsKey(__instance.NetworkObjectId))
                 return;
 
-            ItemChargers.Add(__instance);
+            ItemChargers.Add(charger);
             ExtraItemChargerBinds.Add(__instance.NetworkObjectId, new ExtraItemCharger(__instance.NetworkObjectId, false));
             GameState.WentIntoOrbit += ExtraItemChargerBinds[__instance.NetworkObjectId].ResetItemCharger;
             Network.RegisterMessage($"IsBroken{__instance.NetworkObjectId}", true, (ulong _, ExtraItemCharger charger) => ExtraItemChargerBinds[__instance.NetworkObjectId] = charger);
         }
 
-        [HarmonyPatch(typeof(ItemCharger), nameof(ItemCharger.OnDestroy)), HarmonyPostfix]
-        static void OnDestroyPostfix(ItemCharger __instance)
+        [HarmonyPatch(typeof(NetworkBehaviour), nameof(NetworkBehaviour.OnDestroy)), HarmonyPrefix]
+        static void OnDestroyPrefix(NetworkBehaviour __instance)
         {
+            ItemCharger charger = __instance.GetComponent<ItemCharger>();
+            if (!charger)
+                return;
+
             if (!ExtraItemChargerBinds.ContainsKey(__instance.NetworkObjectId))
                 return;
 
             Network.UnregisterMessage($"IsBroken{__instance.NetworkObjectId}");
             GameState.WentIntoOrbit -= ExtraItemChargerBinds[__instance.NetworkObjectId].ResetItemCharger;
             ExtraItemChargerBinds.Remove(__instance.NetworkObjectId);
-            ItemChargers.Remove(__instance);
+            ItemChargers.Remove(charger);
         }
 
         [HarmonyPatch(typeof(ItemCharger), nameof(ItemCharger.PlayChargeItemEffectServerRpc)), HarmonyPrefix]
-        private static bool PlayChargeItemEffectServerRpcPrefix(ItemCharger __instance)
+        static bool PlayChargeItemEffectServerRpcPrefix(ItemCharger __instance)
         {
             if (!StartOfRound.Instance.shipHasLanded)
                 return false;
