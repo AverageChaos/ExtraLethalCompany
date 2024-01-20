@@ -64,43 +64,7 @@ A work in progress mod that aims to do two main tasks: adding extra, missing, or
 6. Launch **Lethal Company** and enjoy the mod
 
 # Changelog
-***v1.2.0***
-- Added dependency for LC_API
-- Fixed networking of chargers
-- Added DoT to spore lizard's spores
-- Made slime consume scrap
-- Made slime grow from consuming items
+**For a full list of changes see our [Github Commits](https://github.com/AverageChaos/ExtraLethalCompany/commits/master/)**
 
-***v1.1.5***
-- Buying prices now start higher and decrease (115% to 70%)
-
-***v1.1.4***
-- Conductive items can be placed in the charger
-- Chargers will now break for the round after exploding
-- Fixed vanilla ItemCharger not replicating animations to all clients
-- Made ItemCharger explosion sync across all clients
-
-***v1.1.3***
-- Fixed ItemChargers starting animation when not allowed by server
-
-***v1.1.1***
-- Made RouteRandom a soft dependency
-
-***v1.1.0***
-- Item chargers no longer break after exploding 
-- Updated weather displays to always be {Sensor Err}
-- Ship now has a 20% chance to leave a hour after being struck by lightning (will give an alert)
-- Disabler now disables Bigger Battery Mod & RouteRandom
-
-***v1.0.5***
-- Added exploding chargers
-
-***v1.0.3***
-- Fixed Minimap mod causing errors after being disabled
-
-***v1.0.2***
-- Fixed error with Fines UI when player didn't have enough currency to pay fines
-
-***v1.0.1***
-- Disables Minimap mod
-- Patched Fines UI
+***v1.2.3***
+- Updated chargers
