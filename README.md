@@ -3,10 +3,11 @@ A work in progress mod that aims to do two main tasks: adding extra, missing, or
 [Report A Bug](https://github.com/AverageChaos/ExtraLethalCompany/issues)
 
 # Features
-- ***Disables:***
-    - Minimap Mod
-    - RouteRandom
-    - NoPenalty
+- ***Modifications To Existing Mods:***
+    - Bigger Battery (Increases charger explosion chance)
+    - Minimap        (Disabled)
+    - NoPenalty      (Disabled)
+    - RouteRandom    (Disabled)
 - ***Fines:***
     - Fines UI now displays the percentage cost of casualties and injuries.
     - Fines larger than the player's balance are added to the quota.
