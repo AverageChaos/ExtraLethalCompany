@@ -26,12 +26,7 @@ namespace ExtraLethalCompany
             }
         }
 
-        private static void LethalCompanyMinimap(object inst)
-        {
-            //DisableHarmony(inst, "harmony");
-            //Object.DestroyImmediate(GameObject.Find("MinimapGUI"));
-            HideEnemies = true;
-        }
+        private static void LethalCompanyMinimap(object inst) => HideEnemies = true;
         private static void dev_alexanderdiaz_biggerbattery(object _) => MinimumToExplode = -3;
         private static void stormytuna_RouteRandom(object inst) => DisableHarmony(inst, "harmony");
         private static void NoPenalty(object inst)

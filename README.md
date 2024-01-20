@@ -5,7 +5,7 @@ A work in progress mod that aims to do two main tasks: adding extra, missing, or
 # Features
 - ***Modifications To Existing Mods:***
     - Bigger Battery (Increases charger explosion chance)
-    - Minimap        (Disables and hides enemies)
+    - Minimap        (Hides enemies)
     - NoPenalty      (Disables and increases penalty)
     - RouteRandom    (Disabled)
 - ***Fines:***
