@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using System.Text.RegularExpressions;
 
-namespace ExtraLethalCompany.Patches
+namespace ExtraLethalCompany.Extra.Furniture.ExtraTerminal
 {
     internal static class Terminal_Patch
     {

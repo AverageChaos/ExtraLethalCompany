@@ -1,5 +1,5 @@
 # Extra Lethal Company
-A work in progress mod that aims to do two main tasks: adding extra, missing, or needed feature/changes to Lethal Company, and making the company **EXTRA LETHAL!**
+A work in progress mod that aims to do two main tasks: adding extra, missing, or needed feature/changes to Lethal Company, and making the company **EXTRA LETHAL!**  
 [Report A Bug](https://github.com/AverageChaos/ExtraLethalCompany/issues)
 
 # Features

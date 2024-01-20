@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
 using System;
 
-namespace ExtraLethalCompany.Patches
+namespace ExtraLethalCompany.Extra.HUD
 {
     internal static class HUDManager_Patch
     {
-        [HarmonyPatch(typeof(HUDManager), "ApplyPenalty"), HarmonyPrefix]
-        private static bool ApplyPenaltyPrefix(HUDManager __instance, int playersDead, ref int bodiesInsured)
+        [HarmonyPatch(typeof(HUDManager), nameof(HUDManager.ApplyPenalty)), HarmonyPrefix]
+        static bool ApplyPenaltyPrefix(HUDManager __instance, int playersDead, ref int bodiesInsured)
         {
             Terminal terminal = UnityEngine.Object.FindObjectOfType<Terminal>();
             int profitQuota = TimeOfDay.Instance.profitQuota;

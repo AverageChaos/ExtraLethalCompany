@@ -1,20 +1,9 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
-using ExtraLethalCompany.Patches;
 using HarmonyLib;
-using GameNetcodeStuff;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using System.Linq;
-using ExtraLethalCompany.Unity;
 using LC_API.ServerAPI;
-using LC_API.Data;
-using LC_API.GameInterfaceAPI;
-using ExtraLethalCompany.Extra.Furniture.ExtraItemCharger;
 using ExtraLethalCompany.Extra.Creatures;
-using Steamworks;
-using Steamworks.Data;
-using System;
 
 namespace ExtraLethalCompany
 {
@@ -50,12 +39,7 @@ namespace ExtraLethalCompany
             ModdedServer.SetServerModdedOnly();
             Disabler.Init();
 
-            Harmony.PatchAll(typeof(HUDManager_Patch));
-            Harmony.PatchAll(typeof(Terminal_Patch));
-            Harmony.PatchAll(typeof(ItemCharger_Patch));
-            Harmony.PatchAll(typeof(StartOfRound_Patch));
-            Harmony.PatchAll(typeof(TimeOfDay_Patch));
-            Harmony.PatchAll(typeof(BlobAI_Patch));
+            Harmony.PatchAll();
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }

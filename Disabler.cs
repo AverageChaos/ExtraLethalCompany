@@ -17,7 +17,7 @@ namespace ExtraLethalCompany
                 if (method != null)
                 {
                     ExtraLethalCompany.LogSource.LogInfo("Disabling: " + pluginInfo.Instance.GetType().Name);
-                    method.Invoke(typeof(Disabler), new object[] { pluginInfo.Instance });
+                    method.Invoke(typeof(Disabler), [pluginInfo.Instance]);
                 }
             }
         }

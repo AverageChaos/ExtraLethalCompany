@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-namespace ExtraLethalCompany.Patches
+namespace ExtraLethalCompany.Extra.Ship
 {
     internal static class StartOfRound_Patch
     {
@@ -19,20 +19,6 @@ namespace ExtraLethalCompany.Patches
                 TimeOfDay.Instance.SetShipLeaveEarlyClientRpc(TimeOfDay.Instance.normalizedTimeOfDay + 0.04167f, TimeOfDay.Instance.votesForShipToLeaveEarly);
 
             return false;
-        }
-
-        [HarmonyPatch(typeof(StartOfRound), "SetMapScreenInfoToCurrentLevel"), HarmonyPostfix]
-        private static void SetMapScreenInfoToCurrentLevelPrefix(StartOfRound __instance)
-        {
-            __instance.screenLevelDescription.text = string.Concat(
-            [
-                "Orbiting: ",
-                __instance.currentLevel.PlanetName,
-                "\n",
-                __instance.currentLevel.LevelDescription,
-                "\n",
-                "{Sensor Err}"
-            ]);
         }
     }
 }

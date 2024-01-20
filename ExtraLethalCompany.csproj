@@ -56,8 +56,4 @@
       <HintPath>H:\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Extra\HUD\" />
-  </ItemGroup>
 </Project>
