@@ -12,11 +12,11 @@ namespace ExtraLethalCompany.Extra.Furniture.ExtraItemCharger
 {
     internal static class ItemCharger_Patch
     {
-        internal static readonly List<ItemCharger> ItemChargers = [];
-        internal static readonly Dictionary<ulong, ExtraItemCharger> ExtraItemChargerBinds = [];
+        public static readonly List<ItemCharger> ItemChargers = [];
+        public static readonly Dictionary<ulong, ExtraItemCharger> ExtraItemChargerBinds = [];
 
         [HarmonyPatch(typeof(NetworkBehaviour), nameof(NetworkBehaviour.OnNetworkSpawn)), HarmonyPostfix]
-        static void OnNetworkSpawnPostfix(NetworkBehaviour __instance)
+        public static void OnNetworkSpawnPostfix(NetworkBehaviour __instance)
         {
             ItemCharger charger = __instance.GetComponent<ItemCharger>();
             if (!charger)

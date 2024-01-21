@@ -24,8 +24,6 @@ namespace ExtraLethalCompany
         //public static readonly GameObject SCP173 = Assets.LoadAsset<GameObject>("SCP-173");
         //private static GameObject SCP173Inst;
 
-        private static readonly Harmony Harmony = new(PluginInfo.PLUGIN_GUID);
-
         private void Awake()
         {
             if (gameObject.name != "ExtraLethalCompany")
@@ -42,15 +40,6 @@ namespace ExtraLethalCompany
 
             ModdedServer.SetServerModdedOnly();
             Disabler.Init();
-
-            Harmony.PatchAll(typeof(HUDManager_Patch));
-            Harmony.PatchAll(typeof(Terminal_Patch));
-            Harmony.PatchAll(typeof(ItemCharger_Patch));
-            Harmony.PatchAll(typeof(Extra.Furniture.ExtraTerminal.StartOfRound_Patch));
-            Harmony.PatchAll(typeof(Extra.Ship.StartOfRound_Patch));
-            Harmony.PatchAll(typeof(TimeOfDay_Patch));
-            Harmony.PatchAll(typeof(BlobAI_Patch));
-            Harmony.PatchAll(typeof(Disabler));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
